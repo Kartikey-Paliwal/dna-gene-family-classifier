@@ -29,3 +29,25 @@
 
 ### Questions / confusions
 -
+## Day 2: data exploration
+
+### What I did
+- Learned to explore data with pandas (value_counts, describe, groupby) and plot charts with matplotlib.
+- Found the data is imbalanced, sequence lengths vary from 5 to 18,921 bases, and ~17% are duplicates.
+- So I'll need k-mers to handle different lengths, and must remove duplicates before training to avoid inflated accuracy.
+
+### Check questions
+1. Is the dataset balanced across families? Which is largest and smallest?
+  - Not balanced. Transcription factor is the largest class and ion channel the smallest.
+
+2. What are the shortest and longest sequence lengths? Why is that a problem for ML models?
+  - Shortest is 5 bases and the longest one is 18,921 bases. ML models need inputs of the same size, so raw sequences can’t be fed in directly that's why i'll convert them to k-mers on day-3.
+
+3. Which family has the longest genes (median)?
+  - G protien - coupled receptors
+
+4. Do human, chimp, and dog have similar family distributions?
+  - No
+
+5. How many exact duplicates are there? Why could they make the model look better than it really is?
+  = There are 751 duplicates. That’s about 17% of the data If one copy lands in the training set and the other in the test set, the model has already “seen the answer,” so test accuracy looks higher than real performance. I will remove duplicates before splitting
