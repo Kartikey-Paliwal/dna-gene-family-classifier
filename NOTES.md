@@ -50,4 +50,4 @@
   - No
 
 5. How many exact duplicates are there? Why could they make the model look better than it really is?
-  = There are 751 duplicates. That’s about 17% of the data If one copy lands in the training set and the other in the test set, the model has already “seen the answer,” so test accuracy looks higher than real performance. I will remove duplicates before splitting
+  - There are 751 duplicates. That’s about 17% of the data If one copy lands in the training set and the other in the test set, the model has already “seen the answer,” so test accuracy looks higher than real performance. I will remove duplicates before splitting
