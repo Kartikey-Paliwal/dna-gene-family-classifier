@@ -51,3 +51,20 @@
 
 5. How many exact duplicates are there? Why could they make the model look better than it really is?
   - There are 751 duplicates. That’s about 17% of the data If one copy lands in the training set and the other in the test set, the model has already “seen the answer,” so test accuracy looks higher than real performance. I will remove duplicates before splitting
+
+## Day 3: Clean the data + k-mers 🧬
+
+### What I did
+- Learned to clean data (drop_duplicates, length filter) and wrote my own get_kmers() function to split DNA into overlapping k-letter "words".
+- Cleaning removed 774 sequences (4380 → 3606); data is still imbalanced (TF 1100 vs Ion channel 214).
+- So test accuracy will be more honest now, and k = 6 is a middle ground: small k is too common to tell families apart, large k is too rare to learn from.
+
+### Check questions
+1. Why clean before k-mers?
+  - Duplicates can leak into both train and test (inflating accuracy), and tiny fragments add noise.
+    
+3. 6-mers from a 1000-base sequence?
+  -1000 − 6 + 1 = 995.
+   
+5. Why k=3 too small, k=12 too large?
+  -k=3 gives only 64 common words that appear in every family; k=12 gives ~16.7M rare words the model can't learn from.
