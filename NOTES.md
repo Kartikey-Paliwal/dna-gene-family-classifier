@@ -68,3 +68,17 @@
    
 5. Why k=3 too small, k=12 too large?
   -k=3 gives only 64 common words that appear in every family; k=12 gives ~16.7M rare words the model can't learn from.
+
+## Day 4: Vectorizing (Turning DNA “words” into numbers)
+
+### What I did 
+- Joined each sequence's k-mers into a "sentence" and used CountVectorizer to build a count table (X), plus labels (y).
+- X has 3606 rows (sequences) and ~4100 columns (6-mers); most cells are zero (sparse matrix).
+- So every sequence is now the same size and ready for a model; longer sequences have bigger counts, which could bias the model.
+
+### Check questions
+1. Row = one DNA sequence; column = one 6-mer; each cell = how many times that 6-mer appears in that sequence.
+2. Most cells are zero because each sequence contains only a few hundred of the ~4096 possible 6-mers.
+3. X and y need the same number of rows because each sequence needs exactly one matching family label to learn from.
+
+## Day 5 
