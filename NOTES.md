@@ -81,4 +81,12 @@
 2. Most cells are zero because each sequence contains only a few hundred of the ~4096 possible 6-mers.
 3. X and y need the same number of rows because each sequence needs exactly one matching family label to learn from.
 
-## Day 5 
+## Day 5: First model
+- Split data 80/20 (stratified), trained Multinomial Naive Bayes, and compared it with a baseline that always guesses the biggest family.
+- Test accuracy 0.578 vs baseline 0.305; train 0.638, so only a small gap between train and test.
+- So the model learned real DNA patterns and isn't overfitting, but it's underfitting (too simple); accuracy is lower than tutorials because I removed duplicates, so my score is honest.
+
+### Check questions
+1. Testing on training data lets the model score high by memorising;  unseen test data shows if it really learned.
+2. stratify=y keeps family proportions the same in train and test, so small families like ion channel are fairly represented.
+3. Always guessing the biggest family already gives ~30%, so the model must clearly beat that to prove it learned something.
