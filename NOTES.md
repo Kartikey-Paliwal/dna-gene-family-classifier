@@ -90,3 +90,17 @@
 1. Testing on training data lets the model score high by memorising;  unseen test data shows if it really learned.
 2. stratify=y keeps family proportions the same in train and test, so small families like ion channel are fairly represented.
 3. Always guessing the biggest family already gives ~30%, so the model must clearly beat that to prove it learned something.
+
+## Day 6: Evaluation
+- Used classification_report (precision, recall, F1) and confusion matrices (counts and fractions) to see per-family performance.
+- Recall ranges 50–65% (best: tyrosine kinase, worst: synthase); kinase ↔ phosphatase is the biggest confusion (~25% each way), and the model over-predicts phosphatase.
+- So accuracy hides family-level weaknesses; some confusions make biological sense (same amino acid target, shared domains), which is useful for interpreting the model.
+
+### Check questions
+
+1.In your own words: what’s the difference between precision and recall?
+  - Precision = when the model says a family, how often it's right; recall = of all real members of a family, how many it found.
+2.Which family does your model find worst (lowest recall)? Why might that be?
+  - Synthase (50%), often confused with phosphatase and synthetase, likely due to shared sequence patterns in enzymes that build molecules.
+3.Which two families are confused most? Is there a biological reason?
+ -Tyrosine kinase ↔ phosphatase: both act on tyrosine and share signalling domains, so their DNA has similar k-mers.
